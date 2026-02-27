@@ -123,6 +123,17 @@ module TorchCodec
         }
       end
 
+      def get_frames_played_at(seconds)
+        data, pts_seconds, duration_seconds = Core.get_frames_by_pts(
+          @decoder, seconds
+        )
+        {
+          data: data,
+          pts_seconds: pts_seconds,
+          duration_seconds: duration_seconds
+        }
+      end
+
       private
 
       def _get_and_validate_stream_metadata(

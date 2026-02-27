@@ -918,5 +918,6 @@ void init_core(Rice::Module m) {
     .define_singleton_function("get_frame_at_index", &facebook::torchcodec::get_frame_at_index)
     .define_singleton_function("get_frames_at_indices", &facebook::torchcodec::get_frames_at_indices)
     .define_singleton_function("get_frames_in_range", &facebook::torchcodec::get_frames_in_range)
-    .define_singleton_function("get_frame_at_pts", &facebook::torchcodec::get_frame_at_pts);
+    .define_singleton_function("get_frame_at_pts", &facebook::torchcodec::get_frame_at_pts)
+    .define_singleton_function("get_frames_by_pts", &facebook::torchcodec::get_frames_by_pts);
 }
