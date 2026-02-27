@@ -47,6 +47,7 @@ Encoding [unreleased]
 ```ruby
 encoder = TorchCodec::Encoders::VideoEncoder.new(frames, frame_rate: 24)
 encoder.to_file("file.mp4")
+tensor = encoder.to_tensor("mp4")
 ```
 
 Decoding [unreleased]

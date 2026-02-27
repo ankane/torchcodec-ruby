@@ -39,6 +39,27 @@ module TorchCodec
           extra_options
         )
       end
+
+      def to_tensor(
+        format,
+        codec: nil,
+        pixel_format: nil,
+        crf: nil,
+        preset: nil,
+        extra_options: nil
+      )
+        preset_value = preset.is_a?(Integer) ? preset.to_s : preset
+        Core.encode_video_to_tensor(
+          @frames,
+          @frame_rate,
+          format,
+          codec,
+          pixel_format,
+          crf,
+          preset_value,
+          extra_options
+        )
+      end
     end
   end
 end
