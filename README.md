@@ -38,6 +38,7 @@ Decoding
 decoder = TorchCodec::Decoders::AudioDecoder.new("file.mp3")
 decoder.metadata
 decoder.get_all_samples
+decoder.get_samples_played_in_range(start_seconds: 0, stop_seconds: 1)
 ```
 
 ### Video
