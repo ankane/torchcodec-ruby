@@ -24,7 +24,7 @@ This library follows the [Python API](https://meta-pytorch.org/torchcodec/). Som
 
 ### Audio
 
-Encoding [unreleased]
+Encoding
 
 ```ruby
 encoder = TorchCodec::Encoders::AudioEncoder.new(samples, sample_rate: 8000)
@@ -43,7 +43,7 @@ decoder.get_samples_played_in_range(start_seconds: 0, stop_seconds: 1)
 
 ### Video
 
-Encoding [unreleased]
+Encoding
 
 ```ruby
 encoder = TorchCodec::Encoders::VideoEncoder.new(frames, frame_rate: 24)
@@ -51,7 +51,7 @@ encoder.to_file("file.mp4")
 tensor = encoder.to_tensor("mp4")
 ```
 
-Decoding [unreleased]
+Decoding
 
 ```ruby
 decoder = TorchCodec::Decoders::VideoDecoder.new("file.mp4")
