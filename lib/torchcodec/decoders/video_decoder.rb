@@ -95,6 +95,20 @@ module TorchCodec
         }
       end
 
+      def get_frames_in_range(start, stop, step: 1)
+        frames = Core.get_frames_in_range(
+          @decoder,
+          start,
+          stop,
+          step
+        )
+        {
+          data: frames[0],
+          pts_seconds: frames[1],
+          duration_seconds: frames[2]
+        }
+      end
+
       private
 
       def _get_and_validate_stream_metadata(
