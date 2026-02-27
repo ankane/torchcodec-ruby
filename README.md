@@ -55,6 +55,7 @@ Decoding [unreleased]
 ```ruby
 decoder = TorchCodec::Decoders::VideoDecoder.new("file.mp4")
 decoder.metadata
+decoder.get_frame_at(0)
 ```
 
 ## FFmpeg Installation

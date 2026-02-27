@@ -914,5 +914,6 @@ void init_core(Rice::Module m) {
     .define_singleton_function("encode_audio_to_file", &facebook::torchcodec::encode_audio_to_file)
     .define_singleton_function("add_video_stream", &facebook::torchcodec::add_video_stream)
     .define_singleton_function("encode_video_to_file", &facebook::torchcodec::encode_video_to_file)
-    .define_singleton_function("encode_video_to_tensor", &facebook::torchcodec::encode_video_to_tensor);
+    .define_singleton_function("encode_video_to_tensor", &facebook::torchcodec::encode_video_to_tensor)
+    .define_singleton_function("get_frame_at_index", &facebook::torchcodec::get_frame_at_index);
 }
