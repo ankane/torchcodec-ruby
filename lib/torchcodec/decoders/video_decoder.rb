@@ -134,6 +134,29 @@ module TorchCodec
         }
       end
 
+      def get_frames_played_in_range(start_seconds, stop_seconds)
+        if !(start_seconds <= stop_seconds)
+          raise ArgumentError, "Invalid start seconds: #{start_seconds}. It must be less than or equal to stop seconds (#{stop_seconds})."
+        end
+        if !(@begin_stream_seconds <= start_seconds && start_seconds < @end_stream_seconds)
+          raise ArgumentError, "Invalid start seconds: #{start_seconds}."
+        end
+        if !(stop_seconds <= @end_stream_seconds)
+          raise ArgumentError, "Invalid stop seconds: #{stop_seconds}."
+        end
+        frames = Core.get_frames_by_pts_in_range(
+          @decoder,
+          start_seconds,
+          stop_seconds
+        )
+
+        {
+          data: frames[0],
+          pts_seconds: frames[1],
+          duration_seconds: frames[2]
+        }
+      end
+
       private
 
       def _get_and_validate_stream_metadata(
