@@ -18,6 +18,27 @@ module TorchCodec
         @frames = frames
         @frame_rate = frame_rate
       end
+
+      def to_file(
+        dest,
+        codec: nil,
+        pixel_format: nil,
+        crf: nil,
+        preset: nil,
+        extra_options: nil
+      )
+        preset = preset.is_a?(Integer) ? preset.to_s : preset
+        Core.encode_video_to_file(
+          @frames,
+          @frame_rate,
+          dest.to_s,
+          codec,
+          pixel_format,
+          crf,
+          preset,
+          extra_options
+        )
+      end
     end
   end
 end
