@@ -109,6 +109,20 @@ module TorchCodec
         }
       end
 
+      def get_frame_played_at(seconds)
+        if !(@begin_stream_seconds <= seconds && seconds < @end_stream_seconds)
+          raise IndexError, "Invalid pts in seconds: #{seconds}."
+        end
+        data, pts_seconds, duration_seconds = Core.get_frame_at_pts(
+          @decoder, seconds
+        )
+        {
+          data: data,
+          pts_seconds: pts_seconds.item,
+          duration_seconds: duration_seconds.item
+        }
+      end
+
       private
 
       def _get_and_validate_stream_metadata(

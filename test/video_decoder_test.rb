@@ -47,4 +47,12 @@ class VideoDecoderTest < Minitest::Test
     assert_equal [4], frames[:pts_seconds].shape
     assert_equal [4], frames[:duration_seconds].shape
   end
+
+  def test_get_frame_played_at
+    decoder = TorchCodec::Decoders::VideoDecoder.new("test/support/nasa_13013.mp4")
+    frame = decoder.get_frame_played_at(0)
+    assert_equal [3, 270, 480], frame[:data].shape
+    assert_in_delta 0.0, frame[:pts_seconds]
+    assert_in_delta 0.03336666666666667, frame[:duration_seconds]
+  end
 end
