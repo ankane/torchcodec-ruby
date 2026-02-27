@@ -17,6 +17,9 @@ require_relative "torchcodec/core/metadata"
 require_relative "torchcodec/decoders/audio_decoder"
 require_relative "torchcodec/decoders/decoder_utils"
 
+# encoders
+require_relative "torchcodec/encoders/audio_encoder"
+
 module TorchCodec
   class Error < StandardError; end
 

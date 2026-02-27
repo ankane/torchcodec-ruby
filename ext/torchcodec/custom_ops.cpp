@@ -909,5 +909,6 @@ void init_core(Rice::Module m) {
     .define_singleton_function("_get_container_json_metadata", &facebook::torchcodec::get_container_json_metadata)
     .define_singleton_function("_get_stream_json_metadata", &facebook::torchcodec::get_stream_json_metadata)
     .define_singleton_function("add_audio_stream", &facebook::torchcodec::add_audio_stream)
-    .define_singleton_function("get_frames_by_pts_in_range_audio", &facebook::torchcodec::get_frames_by_pts_in_range_audio);
+    .define_singleton_function("get_frames_by_pts_in_range_audio", &facebook::torchcodec::get_frames_by_pts_in_range_audio)
+    .define_singleton_function("encode_audio_to_tensor", &facebook::torchcodec::encode_audio_to_tensor);
 }
