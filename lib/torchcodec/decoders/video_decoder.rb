@@ -85,6 +85,16 @@ module TorchCodec
         }
       end
 
+      def get_frames_at(indices)
+        data, pts_seconds, duration_seconds = Core.get_frames_at_indices(@decoder, indices)
+
+        {
+          data: data,
+          pts_seconds: pts_seconds,
+          duration_seconds: duration_seconds
+        }
+      end
+
       private
 
       def _get_and_validate_stream_metadata(

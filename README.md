@@ -56,6 +56,7 @@ Decoding [unreleased]
 decoder = TorchCodec::Decoders::VideoDecoder.new("file.mp4")
 decoder.metadata
 decoder.get_frame_at(0)
+decoder.get_frames_at(Torch.tensor([0, 1, 2]))
 ```
 
 ## FFmpeg Installation
