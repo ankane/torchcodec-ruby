@@ -59,6 +59,8 @@ decoder.get_frame_at(0)
 decoder.get_frames_at(Torch.tensor([0, 1, 2]))
 decoder.get_frames_in_range(0, 10, step: 3)
 decoder.get_frame_played_at(0)
+decoder.get_frames_played_at(Torch.tensor([0, 1, 2], dtype: :float64))
+decoder.get_frames_played_in_range(0, 10)
 ```
 
 ## FFmpeg Installation
