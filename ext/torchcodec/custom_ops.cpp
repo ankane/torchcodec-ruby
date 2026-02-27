@@ -906,19 +906,19 @@ void scan_all_streams_to_update_metadata(at::Tensor& decoder) {
 void init_core(Rice::Module m) {
   m
     .define_singleton_function("create_from_file", &facebook::torchcodec::create_from_file)
-    .define_singleton_function("_get_container_json_metadata", &facebook::torchcodec::get_container_json_metadata)
-    .define_singleton_function("_get_stream_json_metadata", &facebook::torchcodec::get_stream_json_metadata)
-    .define_singleton_function("add_audio_stream", &facebook::torchcodec::add_audio_stream)
-    .define_singleton_function("get_frames_by_pts_in_range_audio", &facebook::torchcodec::get_frames_by_pts_in_range_audio)
-    .define_singleton_function("encode_audio_to_tensor", &facebook::torchcodec::encode_audio_to_tensor)
     .define_singleton_function("encode_audio_to_file", &facebook::torchcodec::encode_audio_to_file)
-    .define_singleton_function("add_video_stream", &facebook::torchcodec::add_video_stream)
+    .define_singleton_function("encode_audio_to_tensor", &facebook::torchcodec::encode_audio_to_tensor)
     .define_singleton_function("encode_video_to_file", &facebook::torchcodec::encode_video_to_file)
     .define_singleton_function("encode_video_to_tensor", &facebook::torchcodec::encode_video_to_tensor)
+    .define_singleton_function("add_video_stream", &facebook::torchcodec::add_video_stream)
+    .define_singleton_function("add_audio_stream", &facebook::torchcodec::add_audio_stream)
+    .define_singleton_function("_get_container_json_metadata", &facebook::torchcodec::get_container_json_metadata)
+    .define_singleton_function("_get_stream_json_metadata", &facebook::torchcodec::get_stream_json_metadata)
+    .define_singleton_function("get_frame_at_pts", &facebook::torchcodec::get_frame_at_pts)
     .define_singleton_function("get_frame_at_index", &facebook::torchcodec::get_frame_at_index)
     .define_singleton_function("get_frames_at_indices", &facebook::torchcodec::get_frames_at_indices)
     .define_singleton_function("get_frames_in_range", &facebook::torchcodec::get_frames_in_range)
-    .define_singleton_function("get_frame_at_pts", &facebook::torchcodec::get_frame_at_pts)
-    .define_singleton_function("get_frames_by_pts", &facebook::torchcodec::get_frames_by_pts)
-    .define_singleton_function("get_frames_by_pts_in_range", &facebook::torchcodec::get_frames_by_pts_in_range);
+    .define_singleton_function("get_frames_by_pts_in_range", &facebook::torchcodec::get_frames_by_pts_in_range)
+    .define_singleton_function("get_frames_by_pts_in_range_audio", &facebook::torchcodec::get_frames_by_pts_in_range_audio)
+    .define_singleton_function("get_frames_by_pts", &facebook::torchcodec::get_frames_by_pts);
 }
