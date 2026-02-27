@@ -41,6 +41,7 @@ namespace :download do
   task :files do
     Dir.mkdir("test/support") unless Dir.exist?("test/support")
 
+    download_file("https://github.com/meta-pytorch/torchcodec/raw/refs/heads/main/test/resources/nasa_13013.mp4")
     download_file("https://github.com/meta-pytorch/torchcodec/raw/refs/heads/main/test/resources/nasa_13013.mp4.audio.mp3")
   end
 end

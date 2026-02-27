@@ -7,5 +7,10 @@ module TorchCodec
         raise TypeError, "Unknown source type: #{source.class.name}"
       end
     end
+
+    def self._get_cuda_backend
+      # TODO improve
+      "ffmpeg"
+    end
   end
 end

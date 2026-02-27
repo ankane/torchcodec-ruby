@@ -1,5 +1,16 @@
 module TorchCodec
   module Core
+    def self._get_optional_par_fraction(stream_dict)
+      begin
+        Rational(
+          stream_dict.fetch("sampleAspectRatioNum"),
+          stream_dict.fetch("sampleAspectRatioDen")
+        )
+      rescue KeyError
+        nil
+      end
+    end
+
     def self.get_container_metadata(decoder)
       container_dict = JSON.parse(_get_container_json_metadata(decoder))
       streams_metadata = []
@@ -16,7 +27,20 @@ module TorchCodec
           stream_index: stream_index
         }
         if stream_dict["mediaType"] == "video"
-          raise Todo
+          streams_metadata << {
+            begin_stream_seconds_from_content: stream_dict["beginStreamSecondsFromContent"],
+            end_stream_seconds_from_content: stream_dict["endStreamSecondsFromContent"],
+            end_stream_seconds: stream_dict["endStreamSeconds"],
+            num_frames: stream_dict["numFrames"],
+            average_fps: stream_dict["averageFps"],
+            width: stream_dict["width"],
+            height: stream_dict["height"],
+            num_frames_from_header: stream_dict["numFramesFromHeader"],
+            num_frames_from_content: stream_dict["numFramesFromContent"],
+            average_fps_from_header: stream_dict["averageFpsFromHeader"],
+            pixel_aspect_ratio: _get_optional_par_fraction(stream_dict),
+            **common_meta
+          }
         elsif stream_dict["mediaType"] == "audio"
           streams_metadata << {
             sample_rate: stream_dict["sampleRate"],
@@ -25,7 +49,10 @@ module TorchCodec
             **common_meta
           }
         else
-          raise Todo
+          # This is neither a video nor audio stream. Could be e.g. subtitles.
+          # We still need to add a dummy entry so that len(streams_metadata)
+          # is consistent with the number of streams.
+          streams_metadata << common_meta
         end
       end
 
