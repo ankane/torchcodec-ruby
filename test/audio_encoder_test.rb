@@ -1,6 +1,14 @@
 require_relative "test_helper"
 
 class AudioEncoderTest < Minitest::Test
+  def test_to_file
+    samples = Torch.zeros(8000)
+    sample_rate = 8000
+    encoder = TorchCodec::Encoders::AudioEncoder.new(samples, sample_rate: sample_rate)
+    assert_nil encoder.to_file("/tmp/test.mp3")
+    assert File.exist?("/tmp/test.mp3")
+  end
+
   def test_to_tensor
     samples = Torch.zeros(8000)
     sample_rate = 8000

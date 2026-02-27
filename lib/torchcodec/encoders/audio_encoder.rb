@@ -26,6 +26,22 @@ module TorchCodec
         @sample_rate = sample_rate
       end
 
+      def to_file(
+        dest,
+        bit_rate: nil,
+        num_channels: nil,
+        sample_rate: nil
+      )
+        Core.encode_audio_to_file(
+          @samples,
+          @sample_rate,
+          dest.to_s,
+          bit_rate,
+          num_channels,
+          sample_rate
+        )
+      end
+
       def to_tensor(
         format,
         bit_rate: nil,
