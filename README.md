@@ -22,10 +22,37 @@ gem "torchcodec"
 
 This library follows the [Python API](https://meta-pytorch.org/torchcodec/). Most functionality is missing at the moment. PRs welcome!
 
+### Audio
+
+Encoding [unreleased]
+
+```ruby
+encoder = TorchCodec::Encoders::AudioEncoder.new(samples, sample_rate: 8000)
+encoder.to_file("file.mp3")
+tensor = encoder.to_tensor("mp3")
+```
+
+Decoding
+
 ```ruby
 decoder = TorchCodec::Decoders::AudioDecoder.new("file.mp3")
 decoder.metadata
 decoder.get_all_samples
+```
+
+### Video
+
+Encoding [unreleased]
+
+```ruby
+encoder = TorchCodec::Encoders::VideoEncoder.new(frames, frame_rate: 24)
+```
+
+Decoding [unreleased]
+
+```ruby
+decoder = TorchCodec::Decoders::VideoDecoder.new("file.mp4")
+decoder.metadata
 ```
 
 ## FFmpeg Installation
