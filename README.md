@@ -20,7 +20,7 @@ gem "torchcodec"
 
 ## Getting Started
 
-This library follows the [Python API](https://meta-pytorch.org/torchcodec/). Most functionality is missing at the moment. PRs welcome!
+This library follows the [Python API](https://meta-pytorch.org/torchcodec/). Some functionality is missing at the moment. PRs welcome!
 
 ### Audio
 
